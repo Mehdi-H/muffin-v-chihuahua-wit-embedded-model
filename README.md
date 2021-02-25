@@ -18,6 +18,17 @@ Packaging of this Python app is done with
 * the Wheel format, with setuptools 
 * and docker.
 
+## Demo with docker
+
+You can test the end result with the following docker container :
+
+```bash
+    docker pull mho7/muffin-v-chihuahua-embedded:v1;
+    docker run -p 8080:8080 mho7/muffin-v-chihuahua-embedded:v1;
+```
+
+The remaining parts of this README document explains how to build this `muffin-v-chihuahua-embedded` docker container. 
+
 ## How can I run the packaging of this muffin_v_chihuahua ML app
 
 Basically, everything you can do in this repo is available when running `make` or `make help` in your terminal, according to the [self-documented makefile](https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html) convention.
@@ -44,7 +55,7 @@ This model is downloaded from François Chollet [deep-learning-models](https://g
 
 You can run `make package-wheel` to build a Wheel distribution from
 
-* the [setup.py](./setup.py) and [setup.cfg](./setup.cfg) files,
+* the [setup.py](./setup.py), [setup.cfg](./setup.cfg) and [MANIFEST.in](./MANIFEST.in) files,
 * the Python sources in the [muffin_v_chihuahua](./muffin_v_chihuahua) package,
 * the images of muffins and chihuahuas in [data/](./muffin_v_chihuahua/data) folder,
 * the [ML pre-trained model](./muffin_v_chihuahua/inception_v3_weights_tf_dim_ordering_tf_kernels.h5) in the muffin_v_chihuahua package.
@@ -75,3 +86,13 @@ It should look like the following :
 ![screenshot of the browser while running the app with docker](./docs/browser-make-run-docker.png)
 
 You can quit the application in your terminal with `Ctrl+c` when you are done.
+
+### (Optional) Run the application from the Wheel, without docker
+
+Once the Wheel distribution is produced with `make package-wheel`, you can install the `muffin_v_chihuahua` Python package locally, in a Python virtual environment, with the following command : `pip install dist/muffin_v_chihuahua_with_embedded_model-1.0-py3-none-any.whl`.
+
+You can check that the app is available with `pip freeze | grep muffin`.
+
+Then, the `muffin_v_chihuahua` application will be available locally with the command line, as described in [muffin_v_chihuahua/__main__.py](muffin_v_chihuahua/__main__.py) script.
+
+You can run the muffin-v-chihuahua classification demo with the following command : `muffin-v-chihuahua-with-embedded-model run-demo`.

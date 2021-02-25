@@ -44,12 +44,19 @@ datasets: chihuahua-dataset muffin-dataset
 model:
 	wget -nc https://github.com/fchollet/deep-learning-models/releases/download/v0.5/inception_v3_weights_tf_dim_ordering_tf_kernels.h5 -O muffin_v_chihuahua/inception_v3_weights_tf_dim_ordering_tf_kernels.h5 || true
 
-.PHONY: package-wheel  ## 📦 packaging the application as a Wheel
+.PHONY: package-wheel  ## 📦 ☸️ packaging the application as a Wheel
 package-wheel: datasets
 	python setup.py bdist_wheel
 
-package-docker:
-	docker build -t muffin-v-chihuahua:embedded-v1 .
+.PHONY: package-docker  ## 📦 🐳 packaging the application for Docker
+package-docker: package-wheel
+	docker build -t muffin-v-chihuahua-embedded:v1 -t mho7/muffin-v-chihuahua-embedded:v1 .
 
+.PHONY: run-docker  ## 🐳 ⚙️ run the application as a docker container
 run-docker:
-	docker run -p 8080:8080 muffin-v-chihuahua:embedded-v1
+	docker run -p 8080:8080 muffin-v-chihuahua-embedded:v1
+
+.PHONY: package-wheel  ## ☸️ ⚙️ run the application from the Wheel distribution
+run-app: package-wheel
+	pip install dist/muffin_v_chihuahua_with_embedded_model-1.0-py3-none-any.whl
+	muffin-v-chihuahua-with-embedded-model run-demo
