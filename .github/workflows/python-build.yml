@@ -22,7 +22,7 @@ jobs:
         pip install setuptools wheel twine
     - name: Build
       run: |
-        python setup.py sdist bdist_wheel
+        make package-wheel
     - uses: actions/upload-artifact@v2
       with:
         name: muffin-v-chihuahua-artifact
