@@ -18,16 +18,25 @@ Packaging of this Python app is done with
 * the Wheel format, with setuptools 
 * and docker.
 
-## Demo with docker
+## Demo : run the ML app with docker
 
-You can test the end result with the following docker container :
+You can test the end result immediately with the following docker container :
 
 ```bash
-    docker pull mho7/muffin-v-chihuahua-embedded:v1;
-    docker run -p 8080:8080 mho7/muffin-v-chihuahua-embedded:v1;
+    $> docker pull mho7/muffin-v-chihuahua-embedded:v1;
+    $> docker run -p 8080:8080 mho7/muffin-v-chihuahua-embedded:v1;
 ```
 
 The remaining parts of this README document explains how to build this `muffin-v-chihuahua-embedded` docker container. 
+
+## Demo : run the ML app from Wheel distribution
+
+You can test the end result immediately with the Wheel distribution available as a release artifact from this repo, by execution the following command in a Python>=3.8 environment :
+
+```bash
+    $> pip install https://github.com/Mehdi-H/muffin-v-chihuahua-with-embedded-model/releases/download/v1.0/muffin_v_chihuahua_with_embedded_model-1.0-py3-none-any.whl;
+    $> muffin-v-chihuahua-with-embedded-model run-demo;
+```
 
 ## How can I run the packaging of this muffin_v_chihuahua ML app
 
