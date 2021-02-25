@@ -20,6 +20,10 @@ Packaging of this Python app is done with
 
 ## How can I run the packaging of this muffin_v_chihuahua ML app
 
+Basically, everything you can do in this repo is available when running `make` or `make help` in your terminal, according to the [self-documented makefile](https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html) convention.
+
+
+
 ### Download some images
 
 You can run `make datasets` at the root of this repo.
@@ -35,3 +39,39 @@ To avoid training an ad-hoc model for this computer vision task, we can download
 This command will download the InceptionV3 model [listed on Keras website](https://keras.io/api/applications/).
 
 This model is downloaded from François Chollet [deep-learning-models](https://github.com/fchollet/deep-learning-models/) repository, in which the official InceptionV3 model is exposed as an artefact in [release v0.5](https://github.com/fchollet/deep-learning-models/releases/tag/v0.5).
+
+### Package the application (with images and a model) as a Wheel
+
+You can run `make package-wheel` to build a Wheel distribution from
+
+* the [setup.py](./setup.py) and [setup.cfg](./setup.cfg) files,
+* the Python sources in the [muffin_v_chihuahua](./muffin_v_chihuahua) package,
+* the images of muffins and chihuahuas in [data/](./muffin_v_chihuahua/data) folder,
+* the [ML pre-trained model](./muffin_v_chihuahua/inception_v3_weights_tf_dim_ordering_tf_kernels.h5) in the muffin_v_chihuahua package.
+
+The result of this command will be the creation of a `dist/` folder containing the `*.whl` distribution.
+
+### Package the application (with the Wheel) as a docker image
+
+You can run `make package-docker` to build a Wheel distribution from
+
+* the [dockerfile](./dockerfile) that describes the image,
+* the [Wheel distribution](./dist/muffin_v_chihuahua_with_embedded_model-1.0-py3-none-any.whl) generated in the `dist/` folder
+
+### Run the application as a docker container
+
+You can run the application with docker by running the following command : `make run-demo`.
+
+While the application is running in your terminal, you can open your browser at <http://localhost:8080> to access the Streamlit frontend.
+
+It should look like the following :
+
+- in your terminal 👇
+
+![screenshot of the terminal while running the app with docker](./docs/terminal-make-run-docker.png)
+
+- in your browser 👇
+
+![screenshot of the browser while running the app with docker](./docs/browser-make-run-docker.png)
+
+You can quit the application in your terminal with `Ctrl+c` when you are done.

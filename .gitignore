@@ -10,3 +10,8 @@ muffin_v_chihuahua/data/muffin/*
 
 # ML pre-trained model
 muffin_v_chihuahua/inception_v3_weights_tf_dim_ordering_tf_kernels.h5
+
+# by-product of wheel generation
+dist/
+build/
+muffin_v_chihuahua_with_embedded_model.egg-info/
