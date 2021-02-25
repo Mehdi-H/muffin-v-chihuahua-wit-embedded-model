@@ -11,7 +11,7 @@ PYTHON_VERSION?=3.8.1
 
 .PHONY: help
 help:
-	echo "❓ Utiliser \`make <target>' où <target> peut être"
+	echo "❓ Use \`make <target>' where <target> can be"
 	grep -E '^\.PHONY: [a-zA-Z0-9_-]+ .*?## .*$$' $(MAKEFILE_LIST) | \
 		awk 'BEGIN {FS = "(: |##)"}; {printf "\033[36m%-30s\033[0m %s\n", $$2, $$3}'
 
