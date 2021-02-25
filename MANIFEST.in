@@ -1,0 +1,3 @@
+recursive-include muffin_v_chihuahua/data/muffin *.jpg
+recursive-include muffin_v_chihuahua/data/chihuahua *.jpg
+include muffin_v_chihuahua/inception_v3_weights_tf_dim_ordering_tf_kernels.h5
