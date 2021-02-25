@@ -45,7 +45,7 @@ model:
 	wget -nc https://github.com/fchollet/deep-learning-models/releases/download/v0.5/inception_v3_weights_tf_dim_ordering_tf_kernels.h5 -O muffin_v_chihuahua/inception_v3_weights_tf_dim_ordering_tf_kernels.h5 || true
 
 .PHONY: package-wheel  ## 📦 ☸️ packaging the application as a Wheel
-package-wheel: datasets
+package-wheel: datasets model
 	python setup.py bdist_wheel
 
 .PHONY: package-docker  ## 📦 🐳 packaging the application for Docker
