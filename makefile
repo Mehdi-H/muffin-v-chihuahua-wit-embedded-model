@@ -46,7 +46,7 @@ model:
 
 .PHONY: package-wheel  ## 📦 ☸️ packaging the application as a Wheel
 package-wheel: datasets model
-	python setup.py bdist_wheel
+	pip install wheel && python setup.py bdist_wheel
 
 .PHONY: package-docker  ## 📦 🐳 packaging the application for Docker
 package-docker: package-wheel

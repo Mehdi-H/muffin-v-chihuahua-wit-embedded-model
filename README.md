@@ -73,7 +73,7 @@ The result of this command will be the creation of a `dist/` folder containing t
 
 ### Package the application (with the Wheel) as a docker image 📦 🐳 
 
-You can run `make package-docker` to build a Wheel distribution from
+You can run `make package-docker` to build a docker image from
 
 * the [dockerfile](./dockerfile) that describes the image,
 * the [Wheel distribution](./dist/muffin_v_chihuahua_with_embedded_model-1.0-py3-none-any.whl) generated in the `dist/` folder
