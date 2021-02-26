@@ -38,6 +38,20 @@ You can test the end result immediately with the Wheel distribution available as
     $> muffin-v-chihuahua-with-embedded-model run-demo;
 ```
 
+## Specificity of this approach (embedded)
+
+This muffin-v-chihuahua classifier works with 1 application that contains :
+
+- A Streamlit frontend application, with the responsibility to expose images of muffins or chihuahua with their associated classification prediction
+
+- A Deep Learning model able to predict the presence of a muffin or a chihuahua in an image.
+
+- Some images of muffins and chihuahuas for demonstration purposes.
+
+![illustrating embedded model approach](./docs/schema-embedded-model.png)
+
+Thus, the model is embedded in the application to create a unique artifact.
+
 ## How to run the packaging of this muffin_v_chihuahua ML app
 
 Basically, everything you can do in this repo is available when running `make` or `make help` in your terminal, according to the [self-documented makefile](https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html) convention.
